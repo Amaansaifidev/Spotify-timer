@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated 10-Second Countdown</title>
+
+</head>
+
+<body>
+  <div class="timer-container">
+    <div class="circle">
+      <div id="timer" 10</div>
+    </div>
+  </div>
+
+  <script>
+    let timeLeft = 10;
+
+    function startCountdown() {
+      const timerElement = document.getElementById('timer');
+      timerElement.textContent = timeLeft;
+
+      const countdown = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+          timerElement.textContent = "you can download";
+        }
+      }, 1000);
+    }
+
+    // Start the countdown automatically when the page loads
+    window.onload = startCountdown;
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+
+    .timer-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 10px solid #3498db;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: countdown 10s linear forwards;
+    }
+
+    #timer {
+      font-weight: bold;
+      font-size: 42px;
+      font-family: sans-serif;
+      font-style: italic;
+      color: #09E8FF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes countdown {
+      from {
+        border-color: #9D9B38;
+        background-color: transparent;
+      }
+
+      to {
+        border-color: #BD60BE;
+        background-color: #09FF48;
+      }
+    }
+    #delayedButton{
+      border: none;
+      background: #9F6783;
+    }
+  </style>
+  <div>
+    <a href="base.apk" download>
+   <button id="delayedButton" style="margin: 70% 70%;">Click Me!</button>
+    </a>
+  </div>
+    <script>
+      // Function to make the button visible after 10 seconds
+      setTimeout(function() {
+        document.getElementById('delayedButton').style.display = 'inline';
+      }, 10000); // 10,000 milliseconds = 10 seconds
+    </script>
+    <style>
+        #delayedButton {
+            display: none; /* Initially hide the button */
+        }
+    </style>
+</body>
+
+</html>
